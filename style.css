@@ -1,0 +1,1118 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,button,textarea{font-family: inherit;}
+
+
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+
+button::-moz-focus-inner{padding: 0;
+border:0;}
+
+a,a:visited{text-decoration: none;}
+
+a:hover{text-decoration: none;}
+
+ul li{list-style: none;}
+
+img{vertical-align:top;}
+
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
+
+
+body{
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    color: #616161;
+}
+
+
+/* мин высота у врапера как раз дает что к концу экрана прибиваем футер */
+
+.wrapper{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* если попадается такая строка в классе, то используем такие свойства */
+
+/* так же добавляем отсупы безопасности падингом */
+/* и при этом збильшуем ширину контейнера на ширину падингов */
+[class*="__container"]{
+    max-width: 1087px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* PC */
+@media (max-width:1087px) {
+    [class*="__container"]{
+        max-width: 970px;
+    }
+}
+
+/* TABLET */
+/* ipad имеет ширину 768px чтобы не появились стили сразу для мобилок нужно уменьшать до сотых */
+@media (max-width:991.98px) {
+    [class*="__container"]{
+        max-width: 750px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width:767.98px) {
+    [class*="__container"]{
+        max-width: none;
+    }
+}
+
+.main{
+    flex: 1 1 auto;
+}
+
+.header { 
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    z-index: 50;
+}
+
+.header__container { 
+    display: flex;
+    min-height: 114px;
+    align-items: center;
+}
+
+
+.header_menu {
+    flex: 1 1 auto;
+ }
+.menu {
+    display: flex;
+    justify-content: flex-end;
+ }
+
+
+
+.menu_list { 
+    display: flex;
+}
+
+.menu_item {
+    margin-right: 40px;
+ }
+ 
+
+
+.menu_link { 
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 120%;
+    letter-spacing: 1px;
+    color: #000000;
+}
+
+.menu_link:hover{
+    text-decoration: underline;
+}
+/* здесь мы пытаемся убрать меню для бургера и для этого мы фиксируем позишн для меню-боди */
+@media (max-width: 767.98px){
+    .header_button{
+        position: relative;
+        z-index: 5;
+    }
+    .header_logo{
+        position: relative;
+        z-index: 5;
+    }
+    .menu_body{
+        position: fixed;
+        top:0;
+        left:-100%;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        padding: 90px 15px 30px 15px;
+        transition: left 0.3s ease 0s;
+        /* overflow auto для того шоб при маленькой висоте можна було прокручувать */
+        overflow: auto;
+    }
+    .header:target .menu_body{
+        left:0;
+    }
+    .header_button .button{
+        padding: 14px 20px;
+    }
+    .menu_link{
+        font-size: 20px;
+    }
+    .menu_list{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu_item{
+        margin-bottom: 25px;
+    }
+    .menu_item:last-child{
+        margin-bottom: 0px;
+    }
+}
+
+/* для лого, чтобы было место - убирается надпись */
+@media (max-width: 479.98px){
+    .header_logo{
+        flex: 0 0 40px;
+        overflow: hidden;
+    }
+}
+
+
+
+
+.header_button {
+    flex: 0 0 252px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+ }
+@media (max-width:991.98px) {
+    .header_button{
+        flex: 0 0 170px;
+    }
+    .menu_item {
+        margin-right: 30px;
+     }
+
+     .header__container{
+         min-height: 80px;
+     }
+}
+
+
+ /* використовуємо инлайн-блок по це ссилка и транзишн ставим для определенного свойства в данном случае для цвета фона */
+.button { 
+    display: inline-block;
+    padding: 14px 30px;
+    background: #EC5863;
+    border-radius: 5px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+    line-height:120%;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease 0s;
+
+color: #FCFDFE; 
+}
+
+.button:hover{
+    background-color: #f1727b;
+}
+
+.button_blue {
+    background-color: #4285F4;
+ }
+
+ .button_blue:hover{
+    background-color: #5695fa;
+ }
+
+
+ /* делаем бургер */
+
+/* на ширине экрана >767.98px иконка бургера не отображается */
+.icon-menu{
+    display: none;
+}
+
+
+
+ @media (max-width: 767.98px) {
+     /* создание иконки бургера */
+    .icon-menu{
+        position: relative;
+        flex: 0 0 30px;
+        height: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
+    }
+
+    /* рисуем парал линии для бургера */
+    .icon-menu::before,
+    .icon-menu::after{
+         content: "";
+         background-color: #000;
+         height: 2px;
+    }
+   
+    .icon-menu span{
+        height: 2px;
+        background-color: #000;
+    }
+
+    /* рисуем парал линии для бургера */
+
+
+    /* делаем иконку для крестика. Ширина и высота должны быть одинаковы для красивого ровного крестика */
+.close-icon-menu{
+        position: relative;
+        flex: 0 0 30px;
+        height: 30px;
+        margin-left: 20px;
+
+    }
+
+    /* рисуем 2 линии крестика */
+    .close-icon-menu::before,
+    .close-icon-menu::after{
+        content: "";
+        background-color: #000;
+        height:2px;
+        position: absolute;
+         top:50%;
+         left:0;
+         width: 100%;
+    }
+    /* разворачиваем линии на градусы */
+    .close-icon-menu::before{
+        transform: rotate(45deg);
+    }
+
+    .close-icon-menu::after{
+        transform: rotate(-45deg);
+    }
+
+    /* в момент до нажатия */
+    .close-icon-menu{
+        display: none;
+    }
+
+    /* Если таргет на хедере, то бургер закривается откривается крестик и наоборот */
+
+    .header:target .icon-menu{
+        display: none;
+    }
+
+    .header:target .close-icon-menu{
+        display: flex;
+    }
+
+/* Делаем прокладку для скролла вверх, чтобы текст заходил за него. Это обычный белый блок, который перекрывает нав-айтемы */
+    .header:target .menu_body::before{
+        content: "";
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+    }
+
+
+}
+
+
+
+
+/* main ----------*/
+
+/* pos relative для декора */
+.get-started__container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    padding: 150px 15px 50px 15px;
+}
+
+/* декор */
+.get-started__container::before{
+    content: "";
+    position: absolute;
+    width: 100vw;
+    /* вся ширина вьюпорта */
+    height: 100%;
+    right: 267px;
+    top: 0;
+    background-color: #EC5863;
+    border-radius: 30px 0 0 30px;
+    transform: translate(100%,0%)
+}
+
+
+
+
+@media (max-width:991.98px) {
+    .get-started__container::before{
+       
+        right: 185px;
+        
+    }
+    
+}
+
+
+
+.get-started{
+    background-color: #fafbfd;
+}
+
+
+.get-started_content{
+    flex: 0 1 48%;
+    padding:0 20px;
+}
+
+.get-started_image{
+    flex: 0 1 52%;
+    position: relative;
+    z-index: 5;
+}
+
+.video-get-started{
+    flex: 1 1 100%;
+}
+
+.get-started_image img{
+    max-width: 100%;
+}
+
+.block_text_title{
+    font-family: Rubik;
+font-style: normal;
+font-weight: bold;
+font-size: 44px;
+line-height: 126%;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #000000;
+margin-bottom: 12px;
+}
+
+
+.block_text_text{
+font-family: Rubik;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 138.5%;
+letter-spacing: 0.08em;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #616161;
+max-width: 375px;
+margin-bottom: 24px;
+}
+
+/* .block_text>*:not(:last-child){
+    margin-bottom: 10px;
+} */
+
+
+
+
+@media (max-width: 767.98px) {
+
+    .get-started__container::before{
+        display: none;
+    }
+
+    .get-started__container>div:not(:last-child){
+        margin-bottom: 20px;
+    }
+}
+
+/* блоку з сылком делаем флекс 0 1 100% */
+.get-started_video{
+    flex: 0 1 100%;
+    padding-left: 20px;
+}
+/* для того чтобы ссылка была не на всю ширину */
+
+.video-get-started{
+    display: inline-flex;
+    align-items: center;
+}
+
+.video-get-started_icon{
+    margin-right: 12px;
+}
+
+.video-get-started_title{
+    font-family: Rubik;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+line-height: 126%;
+letter-spacing: 0.08em;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #B0B0B0;
+}
+
+
+.video-get-started_text{
+font-family: Rubik;
+font-style: normal;
+font-weight: normal;
+font-size: 9px;
+line-height: 126%;
+/* or 11px */
+
+letter-spacing: 0.165em;
+text-transform: uppercase;
+font-feature-settings: 'pnum' on, 'lnum' on;
+
+color: #000000;
+
+}
+
+.video-get-started_title:not(:last-child){
+    margin-bottom: 5px;
+}
+
+
+
+
+.get-started_video{
+    margin-top: 60px;
+}
+
+
+
+@media (max-width: 767.98px) {
+    .get-started_video{
+        margin-top: 0px;
+    }
+}
+
+@media (max-width:560px) {
+    .get-started_content {
+        padding:0;
+    }
+    .video-get-started {
+        margin:0;
+    }
+}
+
+
+@media (max-width: 767.98px){
+.get-started {
+    padding:0;
+}
+
+
+.get-started__container::before{
+       
+    right: 220px;
+    
+}
+
+.get-started_content{
+    flex: 1 1 100%;
+    padding:0;
+}
+
+.block_text_text{
+    max-width: none;
+    margin-top: -5px;
+}
+
+.get-started__container{
+    padding: 100px 15px 30px 15px;
+}
+
+.get-started_image{
+    flex: 0 1 100%;
+    text-align: center;
+    /* padding-top: 30px; */
+}
+
+.get-started_video{
+    padding:0;
+}
+
+.video-get-started {
+    margin-left: 0px;
+}
+}
+
+
+
+
+
+.block_text_title span{
+    color:#EC5863;
+}
+
+.block_text_title_blue span{
+    color: #4285F4;
+}
+
+
+@media (max-width:430px) {
+    .block_text_title {
+        font-size: 34px;
+    }
+}
+
+
+
+/* stay_safe */
+
+
+.stay_safe__container{
+    display: flex;
+    align-items: center;
+    padding: 135px 0 106px 0;
+}
+
+.stay_safe_photo{
+    position: relative;
+    flex: 0 1 31.09%;
+   padding: 55px;
+    padding-bottom: 27px; 
+    margin-right: 152px;
+}
+
+
+
+/* декор */
+.photo_item{
+    position: absolute;
+    background: #EC5863;
+}
+.img_stay_safe{
+position: relative;
+z-index: 1;
+filter: drop-shadow(2px 4px 32px rgba(0, 0, 0, 0.12));
+border-radius: 16px;
+}
+
+.photo_item1{
+    width: 77px;
+    height: 77px;
+    border-radius: 30px;
+    left: 32px;
+    bottom: 0px;
+}
+
+
+.photo_item2{
+    width: 147px;
+    height: 147px;
+    border-radius: 30px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+}
+
+.photo_item3{
+    width: 77px;
+    height: 77px;
+    border-radius: 30px;
+   right:0px;
+    bottom: 107px;
+}
+
+/*  */
+
+.stay_safe_content{
+   flex: 0 1 35%;
+}
+
+@media (max-width: 787px) {
+    .stay_safe__container{
+       flex-direction: column-reverse;
+       padding: 50px 15px 106px 15px;
+    }
+    .stay_safe_content{
+        margin-bottom: 35px;
+    }
+    .stay_safe_photo{
+        margin:0;
+    }
+}
+
+@media (max-width:382px) {
+    .photo_item1, .photo_item3{
+        width: 55px;
+        height: 55px;
+        border-radius: 15px;
+    }
+    .photo_item2{
+        width: 90px;
+        height: 90px;
+        top: 20px;;
+        left:20px;
+    }
+    .photo_item3{
+        right: 15px;
+    }
+    .photo_item1{
+        bottom: 10px;
+    }
+}
+
+
+/* experts */
+
+
+
+
+
+.experts {
+    background: #FAFBFD;
+    position: relative;
+    z-index: 0;
+    
+}
+
+.experts__container{
+    padding:103px 0 116px 0;
+}
+
+
+
+
+
+.achieves {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF;
+box-shadow: 0px 2px 24px rgba(88, 126, 236, 0.15);
+border-radius: 16px;
+padding:28px 80px;
+max-width: 654px;
+margin:auto;
+position: relative;
+margin-bottom: 80px;
+ }
+
+
+ 
+.achieve {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+.value_of_achive {
+    font-family: Rubik;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 119%;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.14em;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #EC5863;
+margin-bottom: 5px;
+ }
+.text_of_achive {
+    font-family: Rubik;
+font-style: normal;
+font-weight: bold;
+font-size: 11px;
+line-height: 118%;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.37em;
+text-transform: uppercase;
+font-feature-settings: 'pnum' on, 'lnum' on;
+
+color: #000000;
+ }
+
+
+
+/* achieve decor */
+
+.achieve_item{
+    position: absolute;
+    background: #EC5863;
+    z-index: -1;
+}
+
+.achive_item1{
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    transform: rotate(-30deg);
+    bottom:-15px;
+    left:-20px;
+}
+
+.achive_item2{
+    width: 95px;
+    height: 95px;
+    border-radius: 30px;
+    transform: rotate(105deg);
+    top:-25.8%;
+    left:34%;
+}
+
+.achive_item3{
+    width: 127px;
+    height: 127px;
+    border-radius: 30px;
+    transform: rotate(-30deg);
+    top: 0;
+    right: -50px;
+}
+
+
+
+
+
+@media (max-width:641px) {
+    .achive_item2{
+        width: 95px;
+        height: 95px;
+        border-radius: 30px;
+        transform: rotate(105deg);
+        top:-15.8%;
+        left:34%;
+    }
+    .experts{
+        padding-top: 70px;
+    }
+    .achieves{
+        margin-bottom: 60px;
+    }
+    .achieve_item{
+        display: none;
+    }
+
+}
+
+@media (max-width:637px) {
+    .achieves{
+        flex-direction: column;
+    }
+    .achieve{
+        margin-bottom: 20px;
+    }
+    .achieve:nth-of-type(3){
+        margin-bottom: 0;
+    }
+
+}
+
+
+
+
+/* падинг вниз для высоты блока, который есть родителем дочернего элемента, то есть видео */
+.experts_video{
+position: relative;
+padding-bottom: 30%;
+}
+/* для видео делаем такие манипуляции */
+.experts_video iframe{
+     position: absolute; 
+     width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    object-fit: cover; 
+}
+
+.experts_content_body{
+    display: flex;
+    align-items: center;
+}
+
+.experts_content{
+    flex: 0 1 50%;
+    padding-right: 20px;
+}
+
+.experts_video{
+    flex: 0 1 50%;
+}
+/* так как пропадет ширина в видео через элайн-айтемс, то нужно поставить свойство stretch */
+@media (max-width:767px) {
+    .experts_content_body{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .experts_video{
+        padding-bottom: 50%;
+    }
+    .experts_content{
+        padding-right:0;
+        margin-bottom: 30px;
+    }
+    .achieves{
+        padding:25px;
+    }
+}
+
+
+/* healthcare */
+
+
+.healthcare {
+    padding: 80px 0 75px 0;
+ }
+
+ 
+.healthcare_content { 
+    margin-bottom: 45px;
+}
+
+.block-text_center{
+    text-align: center;
+}
+
+.healthcare_premiums {
+    display: flex;
+    max-width: 980px;
+    margin: 0 0;
+    /* flex-wrap: wrap; */
+ }
+
+ .healthcare_column{
+     padding: 0 36px;
+ }
+
+ .healthcare_column{
+     flex: 0 1 33.333%;
+ }
+ /* даем высоту карточкам, чтобы высота была по контенту */
+.healthcare_premium_item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 17px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 18px rgba(88, 126, 236, 0.18);
+    border-radius: 8px;
+    text-align: center;
+    height: 100%;
+}
+
+.healthcare_premium_icon{
+    margin-bottom: 58px;
+}
+
+.healthcare_premium_title {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 138.5%;
+    text-align: center;
+    letter-spacing: 0.08em;
+    color: #000000;
+ }
+.healthcare_premium_text { 
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 138.5%;
+    text-align: center;
+    letter-spacing: 0.08em;
+    color: #616161;
+}
+
+.block_text_healthcare{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.healthcare_decor_item{
+    background: #EC5863;
+    z-index: -1;
+    position: absolute;
+}
+
+.healthcare_premium_item{
+    position: relative;
+
+}
+
+.healthcare_decor_item11{
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    transform: rotate(-30deg);  
+    bottom: -35px;
+    left: -20px;
+}
+
+.healthcare_decor_item12{
+    width: 96.96px;
+    height: 96.96px;
+    border-radius: 30px;
+    transform: rotate(105deg);
+    right: -45px;
+    top: 30px;
+}
+
+.healthcare_decor_item21{
+    width: 127.47px;
+    height: 127.47px;
+    border-radius: 30px;
+    transform: rotate(-30deg);
+    bottom: -26px;
+    right: -80px;
+}
+
+.healthcare_decor_item31{
+    top: -30px;
+    right: -20px;
+    border-radius: 16px;
+transform: rotate(-30deg);
+width: 65.75px;
+height: 65.75px;
+}
+
+.healthcare_premium_title{
+    margin-bottom: 5px;
+}
+
+@media (max-width:996px) {
+    .healthcare_column{
+        padding: 0 20px;
+    }
+    
+}
+
+@media (max-width:725px) {
+    .healthcare_premiums{
+        flex-wrap: wrap;
+    }
+    .healthcare_column{
+        flex: 0 1 50%;
+    }
+    .healthcare_column:last-child{
+        flex: 0 1 100%;
+    }
+    .healthcare_column{
+        padding: 0 10px;
+    }
+    .healthcare_column:not(:last-child){
+        margin-bottom: 20px;
+    }
+    .healthcare_decor_item{
+        display: none;
+    }
+    
+}
+
+@media (max-width:530px) {
+    .healthcare_column{
+        flex: 0 1 100%;
+    }
+    
+}
+
+@media (max-width:767.98px) {
+    .healthcare {
+        padding: 50px 0 50px 0;
+    }
+    .healthcare_content {
+        margin-bottom: 30px;
+    }
+    .experts{
+        padding: 103px 0 70px 0;
+    }
+    
+}
+
+
+
+
+
+
+
+
+/* footer */
+
+.footer__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_items{
+    display: flex;
+}
+
+.footer_image{
+    margin-right: 55px;
+}
+
+.footer{
+    padding-bottom: 48px;
+}
+
+@media (max-width:384px) {
+    .footer_items{
+        justify-content: center;
+        align-items: center;
+    }
+    .footer_image{
+        margin-right: 20px;
+    }
+}
+
+
+@media (max-width:372px) {
+    .footer_image{
+        margin-right: 0px;
+        /* margin-bottom: 10px; */
+    }
+    .footer_items{
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width:351px) {
+    .footer_image{
+        margin-bottom: 10px;
+    }
+}
